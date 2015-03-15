@@ -1,73 +1,7 @@
   <!DOCTYPE html>
   <html>
   <head>
-    <style type="text/css">
-      html { height: 100%; font-family:"Arial";}
-      body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100%; width: 100%; }
-      #header {
-        width: 100%;
-        height: 14%;
-	display:block;
-	background-color:#111;
-      }
-      #container {
-        width: 75%;
-        height: 100%;
-        position: relative;
-        float:left;
-	display:inline;
-      }
-
-	#container2 {
-		float:left;
-	display:inline;
-		width:23%;
-	padding-left:10px;
-	padding-top:10px;
-	}
-
-	#container2 ul {
-		list-style:none;
-	}
-
-      #map-search{
-        width: 100%;
-        height: 10%;
-	
-      }
-	
-	#map-search input {
-		width:240px;
-		height:30px;
-		font-size:18px;
-	}
-
-      #map-canvas {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      #map-search {
-        z-index: 10;
-      }
-
-	
-
-      #popularity {
-	font-size:20px;
-	font-weight:bold;
-      }
-
-	#righttitle {
-		font-size:20px;
-		font-weight:bold;
-		
-	}
-    </style>
+    <link href="main.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5QX1j1gf4KDXpml5iLPe0Z9a45CvK9k">
   </script>
@@ -75,10 +9,26 @@
   <script src="./js/script.js" >  </script>
 </head>
 <body>
-  <div id="header">&nbsp;</div>
+  <div id="header">
+    <nav id="mainNav">
+          <div id="nav-bar">
+            <div id="nav-roles">
+              <ul>
+                <li>
+                  <img id="banner" src="banner.png" />
+                </li>
+                <li>
+                  <a href="https://github.com/farbodf/Almost50ShadesOfYourCity">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+  </div>
 
   <div id="container" >
-    
+
     <div id="map-canvas"></div>
   </div>
   <div  id="container2">
@@ -86,14 +36,19 @@
       <input autocomplete="off" value="" name="near" placeholder="Go to a location" id="app-location" type="search" >
     </div>
     <p id="righttitle"><span>Almost 50 Shades of your City</span></p>
-    <p>An innovative tool which helps you to understand your region better. We dig into the events happening in and around your region and 
+    <p>An innovative tool which helps you to understand your region better. We dig into the events happening in and around your region and
 	we find popular areas for different categories of events. </p>
-  
+
     <br/><br/>
     <div id="popularity">Popular categories</div>
-    <ul id="list"> 
-      
+    <ul id="list">
+
     </ul>
   </div>
+  <footer id="footer">
+				<p>
+					&copy; Copyright (2015) by Almost 50 Shades of Your City
+				</p>
+	</footer>
 </body>
 </html>
