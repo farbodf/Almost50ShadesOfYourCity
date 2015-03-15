@@ -88,11 +88,13 @@
     <p id="righttitle"><span>Almost 50 Shades of your City</span></p>
     <p>An innovative tool which helps you to understand your region better. We dig into the events happening in and around your region and 
 	we find popular areas for different categories of events. </p>
-  
+    <div id="info"> Info about us </div>
     <br/><br/>
     <div id="popularity">Popular categories</div>
     <ul id="list"> 
-      
+      <li>This is the list of elements to be displayed</li>
+      <li>Tea</li>
+      <li>Milk</li> 
     </ul>
   </div>
 </body>

@@ -6,7 +6,7 @@ $(document).ready(function() {
     city = "Helsinki"
     var map;
     document.getElementById("app-location").addEventListener("change", search);
-	
+    var labelList = [];	
 var markersArray = [];
 function createMarker(x, y, label) {
 	var marker = new google.maps.Marker({
@@ -29,7 +29,6 @@ createList("LABEL","40");
     function clusterCall() {
         // send the new bounds back to your server
         bounds = map.getBounds();
-        console.log(bounds);
         $.post("http://localhost:8000/test",
             {
 	      "mozSystem": true,
@@ -44,14 +43,17 @@ createList("LABEL","40");
 		json = $.parseJSON(data);
 		jQuery.each(json, function() {
 			var label = this['label'];
-            var sz = this['points'].length;
+            		var sz = this['points'].length;
+			labelList.push({"label":label, "size": sz});
   			jQuery.each(this['points'], function() {
 				createMarker(this['x'], this['y'], label);
                 
 			});
-            createList(label,sz);
+            		
+
 		});
-              	console.log(data);
+		createList();
+              //	console.log(data);
             });
     };
 
@@ -112,7 +114,7 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
 
 
     function codeAddress() {
-        console.log(map);
+  
         //var address = document.getElementById("address").value;
         geocoder.geocode({
             'address': city
@@ -135,25 +137,22 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-var options = [
-        set0 = ['Option 1','Option 2'],
-        set1 = ['First Option','Second Option','Third Option']
-    ]
 
-function createList(label,size){
-    var a = '<ul>',
-        b = '</ul>',
-        m = [];
+function createList(){
 
     // Right now, this loop only works with one
     // explicitly specified array (options[0] aka 'set0')
-
-        m[0] = '<li>' + label  + '</li>';
-        m[1] = '<li>' + size  + '</li>';
-
-
-
-    document.getElementById('list').innerHTML = a + m + b;
+	
+	labelList.sort(function(a, b) {
+		return a["size"] < b["size"];
+	});
+	$("#list").html("");
+	for (i = 0; i < labelList.length; ++i) {
+		$("#list").append("<li>" + labelList[i]["label"] + "</li>");
+	}
+	console.log(labelList);
+	labelList = [];
+	
 }
 
 // My goal is to be able to pass a variable
