@@ -1,17 +1,62 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
   <head>
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
       #map-canvas { height: 100%; width: 100%; }
+      #header {
+        width: 100%;
+        height: 5%;
+        position: absolute;
+        background: #111111;
+        margin-bottom: 1%;
+      }
+      #container {
+        width: 75%;
+        height: 100%;
+        position: relative;
+        margin-top: 1%;
+        float:left;
+      }
+
+      #map-search{
+        width: 10%;
+        height: 10%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #map-canvas {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #map-search {
+        z-index: 10;
+      }
     </style>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5QX1j1gf4KDXpml5iLPe0Z9a45CvK9k">
-    </script>
-    <script src="./js/script.js" >  </script>
-  </head>
-  <body>
-<div id="map-canvas"></div>
-  </body>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5QX1j1gf4KDXpml5iLPe0Z9a45CvK9k">
+  </script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="./js/script.js" >  </script>
+</head>
+<body>
+  <div id="header"></div>
+
+  <div id="container" >
+    <div id="map-search" >
+      <input autocomplete="off" value="" name="near" placeholder="Go to a location" id="app-location" type="search" >
+    </div>
+    <div id="map-canvas"></div>
+  </div>
+  <div>
+    <p>This is an sample paragraph and it will be replaced with lots of meaningful data later on</p>>
+  </div>
+  <button id="queryButton"></button>
+</body>
 </html>
