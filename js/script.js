@@ -25,7 +25,7 @@ function clearMarkers() {
 	}
 	markersArray = [];
 }
-
+createList("LABEL","40");
     function clusterCall() {
         // send the new bounds back to your server
         bounds = map.getBounds();
@@ -44,9 +44,12 @@ function clearMarkers() {
 		json = $.parseJSON(data);
 		jQuery.each(json, function() {
 			var label = this['label'];
+            var sz = this['points'].length;
   			jQuery.each(this['points'], function() {
 				createMarker(this['x'], this['y'], label);
+                
 			});
+            createList(label,sz);
 		});
               	console.log(data);
             });
@@ -132,6 +135,29 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
+var options = [
+        set0 = ['Option 1','Option 2'],
+        set1 = ['First Option','Second Option','Third Option']
+    ]
+
+function createList(label,size){
+    var a = '<ul>',
+        b = '</ul>',
+        m = [];
+
+    // Right now, this loop only works with one
+    // explicitly specified array (options[0] aka 'set0')
+
+        m[0] = '<li>' + label  + '</li>';
+        m[1] = '<li>' + size  + '</li>';
+
+
+
+    document.getElementById('list').innerHTML = a + m + b;
+}
+
+// My goal is to be able to pass a variable
+// here to utilize this function with different arrays
 
 
 
