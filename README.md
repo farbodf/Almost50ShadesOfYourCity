@@ -10,5 +10,7 @@ It helps you to find regions of your interest and provide a big picture of the c
 About the Team:
 
 Färbod Fäghihi (faghihifa@gmail.com)
+
 Martin Radev (martin.b.radev@gmail.com)
+
 Ankit Kariryaa (ankit.ky@gmail.com)
