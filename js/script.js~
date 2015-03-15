@@ -6,7 +6,7 @@ $(document).ready(function() {
     city = "Helsinki"
     var map;
     document.getElementById("app-location").addEventListener("change", search);
-	
+    var labelList = [];	
 var markersArray = [];
 function createMarker(x, y, label) {
 	var marker = new google.maps.Marker({
@@ -25,11 +25,10 @@ function clearMarkers() {
 	}
 	markersArray = [];
 }
-
+createList("LABEL","40");
     function clusterCall() {
         // send the new bounds back to your server
         bounds = map.getBounds();
-        console.log(bounds);
         $.post("http://localhost:8000/test",
             {
 	      "mozSystem": true,
@@ -44,11 +43,17 @@ function clearMarkers() {
 		json = $.parseJSON(data);
 		jQuery.each(json, function() {
 			var label = this['label'];
+            		var sz = this['points'].length;
+			labelList.push({"label":label, "size": sz});
   			jQuery.each(this['points'], function() {
 				createMarker(this['x'], this['y'], label);
+                
 			});
+            		
+
 		});
-              	console.log(data);
+		createList();
+              //	console.log(data);
             });
     };
 
@@ -94,8 +99,8 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
             strokeWeight: 2,
             fillColor: '#FF0000',
             fillOpacity: 0.35
-        });*/
-        poly.setMap(map);
+        });
+        poly.setMap(map);*/
 
 
 
@@ -109,7 +114,7 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
 
 
     function codeAddress() {
-        console.log(map);
+  
         //var address = document.getElementById("address").value;
         geocoder.geocode({
             'address': city
@@ -132,6 +137,26 @@ google.maps.event.addListener(map, "projection_changed", clusterCall);
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
+
+function createList(){
+
+    // Right now, this loop only works with one
+    // explicitly specified array (options[0] aka 'set0')
+	
+	labelList.sort(function(a, b) {
+		return a["size"] < b["size"];
+	});
+	$("#list").html("");
+	for (i = 0; i < labelList.length; ++i) {
+		$("#list").append("<li>" + labelList[i]["label"]"</li>");
+	}
+	console.log(labelList);
+	labelList = [];
+	
+}
+
+// My goal is to be able to pass a variable
+// here to utilize this function with different arrays
 
 
 
