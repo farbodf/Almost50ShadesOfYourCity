@@ -90,9 +90,6 @@ nav {
 #footer{
 	background:#333;
 	width:100%;
-  position: relative;
-  top: 100%;
-  transform: translateY(-10%);
 	margin:0 0;text-align:left;
 	color:#ddd;
 	font-size:11px;
@@ -100,6 +97,7 @@ nav {
 	border-bottom:5px #aa001d solid;
 	border-top:1px #aa001d solid;
 	padding:9px 20px 2px 20px;
+  clear:left;
 	}
 
 h1 {
