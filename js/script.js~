@@ -16,8 +16,8 @@ $( document ).ready(function() {
             console.log(bounds);
             $.post("http://localhost:8000/test",
             {
-              "bly": bounds['Ca']['k'],
-              "try": bounds['Ca']['j'],
+              "bly": bounds['Ca']['j'],
+              "try": bounds['Ca']['k'],
               "blx":bounds['va']['j'],
               "trx":bounds['va']['k']
             },
